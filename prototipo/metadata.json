@@ -1,0 +1,7 @@
+{
+  "name": "BioCluster Task Manager",
+  "description": "Gestión empresarial avanzada de tareas combinada con monitoreo de bienestar, barra de energía gamificada y control de roles RBAC.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

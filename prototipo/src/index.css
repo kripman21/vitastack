@@ -1,0 +1,415 @@
+@import "tailwindcss";
+
+/**
+ * ============================================================================
+ * BioCluster / VitaStack Design System
+ * 
+ * Paleta corporativa sobria inspirada en Todoist / Wunderlist / Linear:
+ * - Primario: Azul corporativo (#2563eb / #1d4ed8)
+ * - Fondo oscuro: Azul marino oscuro formal (#0f172a / #0b1120)
+ * - Superficies: Slate oscuro (#1e293b / #151f32) con bordes finos (#334155 / #1e293b)
+ * - Alertas y estados:
+ *    * Riesgo Alto / Burnout: Rojo ladrillo sobrio (#ef4444 / #991b1b)
+ *    * Precaución / Atención: Ámbar cálido (#f59e0b / #b45309)
+ *    * Óptimo / Saludable: Azul sobrio (#3b82f6) / Esmeralda tenue (#10b981)
+ * ============================================================================
+ */
+
+@layer base {
+  :root {
+    --corporate-primary: #2563eb;
+    --corporate-primary-hover: #1d4ed8;
+    --corporate-bg: #0b1120;
+    --corporate-surface: #111a2e;
+    --corporate-border: #1e293b;
+    --corporate-text: #f8fafc;
+    --corporate-muted: #94a3b8;
+  }
+
+  body {
+    font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    background-color: #0b1120;
+    color: #f8fafc;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+/* ============================================================================
+ * MODO CLARO (Light Corporate Theme)
+ * - Fondo general: Gris muy suave / Off-white descansado (#f1f5f9 / #f4f6f8)
+ * - Superficies: Blanco roto suave (#ffffff / #f8fafc)
+ * - Sidebar: Se conserva AZUL OSCURO CORPORATIVO (#0b1220) tanto en claro como en oscuro
+ * ============================================================================ */
+html.light {
+  color-scheme: light;
+}
+
+html.light body {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+/* ============================================================================
+ * NAVBAR / HEADER / CONTROLES DE CABECERA
+ * ============================================================================ */
+html.light header {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* El Sidebar mantiene SIEMPRE su presencia azul marino oscuro con texto claro */
+aside,
+html.light aside,
+html.light aside * {
+  /* No heredar fondos blancos ni textos oscuros del modo claro */
+}
+
+aside,
+html.light aside {
+  background-color: #0b1220 !important;
+  border-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+aside h1,
+aside h2,
+aside h3,
+aside h4,
+aside span:not(.text-blue-400):not(.text-orange-400):not(.text-fuchsia-400):not(.text-amber-400):not(.text-red-400),
+html.light aside h1,
+html.light aside h2,
+html.light aside h3,
+html.light aside h4,
+html.light aside span:not(.text-blue-400):not(.text-orange-400):not(.text-fuchsia-400):not(.text-amber-400):not(.text-red-400) {
+  color: #ffffff !important;
+}
+
+aside p,
+html.light aside p,
+aside .text-slate-400,
+html.light aside .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+/* Botones dentro del sidebar en ambos modos */
+aside button,
+html.light aside button {
+  color: #cbd5e1 !important;
+  background-color: transparent;
+}
+
+aside button:hover,
+html.light aside button:hover {
+  background-color: rgba(30, 41, 59, 0.7) !important;
+  color: #ffffff !important;
+}
+
+/* Botón activo de navegación en el sidebar */
+aside .bg-blue-600,
+html.light aside .bg-blue-600,
+aside button.bg-blue-600,
+html.light aside button.bg-blue-600 {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+aside .bg-blue-600 *,
+html.light aside .bg-blue-600 * {
+  color: #ffffff !important;
+}
+
+/* Fondos oscuros de bloques internos en el Sidebar */
+aside .bg-\[\#131929\],
+html.light aside .bg-\[\#131929\],
+aside .bg-\[\#0a0e18\],
+html.light aside .bg-\[\#0a0e18\] {
+  background-color: #080d17 !important;
+  border-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+/* Superficies principales en Modo Claro: Suaves, limpias, sin blanco deslumbrante */
+html.light main,
+html.light main .flex-1,
+html.light :not(aside):not(aside *) > .flex-1 {
+  background-color: #f1f5f9;
+}
+
+/* El nav y cualquier elemento flex-1 dentro del sidebar conserva fondo transparente */
+aside nav,
+aside .flex-1,
+html.light aside nav,
+html.light aside .flex-1 {
+  background-color: transparent !important;
+}
+
+html.light .bg-\[\#111726\],
+html.light .bg-\[\#101423\],
+html.light .bg-\[\#121828\],
+html.light .bg-\[\#141a29\],
+html.light .bg-\[\#141a2a\],
+html.light .bg-\[\#111a2e\],
+html.light .bg-\[\#121624\] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Contenedores secundarios e inputs en modo claro */
+html.light .bg-\[\#0b0f19\],
+html.light .bg-\[\#0a0e18\],
+html.light .bg-\[\#0d101a\],
+html.light .bg-\[\#0c101a\],
+html.light .bg-\[\#090d16\],
+html.light .bg-\[\#0b1120\],
+html.light .bg-\[\#0d121f\]:not(aside),
+html.light .bg-\[\#141b2c\],
+html.light .bg-\[\#131929\]:not(aside *) {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Botón de filtrar en Modo Claro: Fondo claro y texto oscuro visible */
+html.light .bg-\[\#141b2c\],
+html.light button.bg-\[\#141b2c\],
+html.light button:has(.lucide-filter) {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+
+html.light button.bg-\[\#141b2c\]:hover,
+html.light button:has(.lucide-filter):hover {
+  background-color: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
+}
+
+/* Botón de campana / notificaciones en modo claro */
+html.light button:has(.lucide-bell) {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+html.light button:has(.lucide-bell):hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Botones azules corporativos: SIEMPRE texto blanco (#ffffff) */
+.bg-blue-600,
+button.bg-blue-600,
+html.light .bg-blue-600,
+html.light button.bg-blue-600 {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+.bg-blue-600 *,
+html.light .bg-blue-600 * {
+  color: #ffffff !important;
+}
+
+/* Table headers en Modo Claro: fondo suave y texto nítido */
+html.light th,
+html.light table thead tr {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Cajas de estadísticas (TOTAL, PROG, REV) de las tarjetas en Modo Claro */
+html.light .bg-slate-800\/30,
+html.light .bg-slate-800\/40,
+html.light .bg-slate-800\/50 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light .bg-slate-800\/30 span,
+html.light .bg-slate-800\/40 span {
+  color: #1e293b !important;
+}
+
+html.light .bg-slate-800\/30 span.text-blue-400,
+html.light .bg-slate-800\/40 span.text-blue-400 {
+  color: #2563eb !important;
+}
+
+html.light .bg-slate-800\/30 span.uppercase,
+html.light .bg-slate-800\/40 span.uppercase {
+  color: #64748b !important;
+}
+
+/* Badges de Mood / Estado en Modo Claro */
+html.light .bg-blue-950\/50,
+html.light .bg-blue-950\/60 {
+  background-color: #eff6ff !important;
+  border-color: #bfdbfe !important;
+  color: #1d4ed8 !important;
+}
+
+html.light .bg-orange-950\/50,
+html.light .bg-orange-950\/40,
+html.light .bg-orange-950\/10 {
+  background-color: #fff7ed !important;
+  border-color: #fed7aa !important;
+  color: #c2410c !important;
+}
+
+html.light .bg-fuchsia-950\/60,
+html.light .bg-fuchsia-950\/50,
+html.light .bg-fuchsia-950\/10 {
+  background-color: #fdf4ff !important;
+  border-color: #f5d0fe !important;
+  color: #a21caf !important;
+}
+
+/* Badges y etiquetas con fondo oscuro en modo claro se convierten a grises/azules suaves */
+html.light .bg-slate-800,
+html.light .bg-slate-900 {
+  background-color: #e2e8f0 !important;
+  color: #334155 !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Badges en modo oscuro: Fondo suave slate en vez de negro puro */
+html.dark .bg-slate-800,
+html.dark .bg-slate-900 {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+/* ============================================================================
+ * PALETA DE ACENTOS: NARANJA (Atención) & FUCSIA/VIOLETA (Alerta Crítica)
+ * ============================================================================ */
+
+/* Naranja para Atención / Precaución / Prioridad Alta */
+.accent-amber-badge,
+.bg-amber-950\/40,
+.bg-amber-950\/50 {
+  background-color: rgba(124, 45, 18, 0.25) !important;
+  border-color: rgba(234, 88, 12, 0.4) !important;
+  color: #fb923c !important;
+}
+
+html.light .bg-amber-950\/40,
+html.light .bg-amber-950\/50,
+html.light .bg-\[\#14141d\] {
+  background-color: #fff7ed !important;
+  border-color: #fed7aa !important;
+  color: #c2410c !important;
+}
+
+/* Fucsia / Violeta / Magenta para Alertas Críticas / Sobrecarga / Burnout */
+.accent-fuchsia-badge,
+.bg-red-950\/60,
+.bg-red-950\/70,
+.bg-red-950\/50 {
+  background-color: rgba(112, 26, 117, 0.25) !important;
+  border-color: rgba(192, 38, 211, 0.4) !important;
+  color: #f0abfc !important;
+}
+
+.text-red-400,
+.text-red-300 {
+  color: #e879f9 !important;
+}
+
+.bg-red-500 {
+  background-color: #d946ef !important;
+}
+
+.border-red-900\/60,
+.border-red-900\/80 {
+  border-color: rgba(192, 38, 211, 0.35) !important;
+}
+
+html.light .bg-red-950\/60,
+html.light .bg-red-950\/70,
+html.light .bg-red-950\/50,
+html.light .bg-\[\#16111a\] {
+  background-color: #fdf4ff !important;
+  border-color: #f5d0fe !important;
+  color: #a21caf !important;
+}
+
+html.light .text-red-400,
+html.light .text-red-300 {
+  color: #a21caf !important;
+}
+
+/* Tipografía general para el contenido principal (excluyendo el Sidebar) */
+html.light :not(aside):not(aside *).text-white,
+html.light :not(aside):not(aside *).text-slate-100,
+html.light :not(aside):not(aside *).text-slate-200 {
+  color: #1e293b !important;
+}
+
+html.light :not(aside):not(aside *).text-slate-300,
+html.light :not(aside):not(aside *).text-slate-400 {
+  color: #64748b !important;
+}
+
+html.light :not(aside):not(aside *).border-slate-800,
+html.light :not(aside):not(aside *).border-slate-700 {
+  border-color: #e2e8f0 !important;
+}
+
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light table thead tr {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light table tbody tr:hover {
+  background-color: #f1f5f9 !important;
+}
+
+/* ============================================================================
+ * SCROLLBARS CORPORATIVAS MINIMALISTAS
+ * ============================================================================ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0b1120;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
